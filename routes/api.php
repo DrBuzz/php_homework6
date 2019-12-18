@@ -16,8 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::group(['prefix'=>'/test'],function () {
+//Route::middleware('apiMiddleware')->group(['prefix'=>'/test'],function () {
+Route::group(['prefix'=>'/test','middleware' => 'apikey'],function () {
     Route::get('/one', 'TestController@getOne');
     Route::post('/one', 'TestController@setOne');
 });
