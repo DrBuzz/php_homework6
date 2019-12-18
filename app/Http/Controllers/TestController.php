@@ -7,20 +7,23 @@ use App\Services\TestBasicService;
 
 class TestController extends Controller
 {
+    private $a;
+    public function __construct(TestBasicService $a)
+    {
+        $this->a = $a;
+    }
+
     public function  getOne () {
-        $a = new TestBasicService();
-        $a->setName('Vladimir');
-        $a->setAge(33);
-        $a->setSex(true);
-        return response()->json($a->getOne());
+        $this->a->setName('Vladimir');
+        $this->a->setAge(33);
+        $this->a->setSex(true);
+        return response()->json($this->a->getOne());
     }
     public function  setOne (request $request) {
-        $a = new TestBasicService();
-        $a->setName($request->get('name'));
-        $a->setAge($request->get('age'));
-        $a->setSex($request->get('sex'));
-        //$b=;
-        return response()->json($a->getOne());
+        $this->a->setName($request->get('name'));
+        $this->a->setAge($request->get('age'));
+        $this->a->setSex($request->get('sex'));
+        return response()->json($this->a->getOne());
     }
 }
 
