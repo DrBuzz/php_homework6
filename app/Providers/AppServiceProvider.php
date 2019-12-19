@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TestBasicService::class, function () {
             return new TestBasicService(new TestOne());
         });
+        $this->app->alias(TestBasicService::class,'service.test_basic');
     }
 
     /**
