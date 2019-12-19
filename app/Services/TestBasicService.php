@@ -1,11 +1,22 @@
 <?php
 namespace App\Services;
 use Illuminate\Http\Request;
+class TestOne {
+    public $name, $age, $sex;
+}
+
 class TestBasicService
 {
-private $name, $age, $sex;
+
+    private $b;
+
+    public function __construct(TestOne $b)
+    {
+        $this->b = $b;
+    }
+
 public function getOne(){
-$array = ["name" => $this->name, "age" => $this->age,  "sex" => $this->sex];
+$array = ["name" => $this->b->name, "age" => $this->b->age,  "sex" => $this->b->sex];
 return $array;
 }
 public function getTypes(){
@@ -13,22 +24,22 @@ $array = ["name" => "string", "age" => "int",  "sex" => "bool"];
 return $array;
 }
 public function getName(){
-return $this->name;
+return $this->b->name;
 }
 public function getAge(){
-return $this->age;
+return $this->b->age;
 }
 public function getSex(){
-return $this->sex;
+return $this->b->sex;
 }
 public function setName($name){
-$this->name=$name;
+$this->b->name=$name;
 }
 public function setAge($age){
-$this->age=$age;
+$this->b->age=$age;
 }
 public function setSex($sex){
-$this->sex=$sex;
+$this->b->sex=$sex;
 }
 
 }
